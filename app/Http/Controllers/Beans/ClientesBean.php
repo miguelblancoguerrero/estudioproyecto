@@ -22,7 +22,7 @@ class ClientesBean extends Controller
             'telefonos' => 'required',
         ]);
         ClientesDao::insert($request);
-        $this->index();
+        return $this->index();
     }
 
 }
