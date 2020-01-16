@@ -1,0 +1,81 @@
+CREATE OR REPLACE TABLE clientes (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	indetificacion_numero VARCHAR(20) NOT NULL UNIQUE,
+	identificacion_tipo VARCHAR(3) NOT NULL,
+	nombre VARCHAR(50) NOT NULL,
+	apellidos VARCHAR(50),
+	direccion VARCHAR(50),
+	telefonos VARCHAR(100)
+);
+
+CREATE OR REPLACE TABLE producto_tipos (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	descripcion VARCHAR(200),
+	padre INT(10) NOT NULL,
+	CONSTRAINT pro_tips_padre_fk FOREIGN KEY(padre) REFERENCES producto_tipos(id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+
+CREATE OR REPLACE TABLE productos (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	codigo VARCHAR(10) NOT NULL UNIQUE,
+	referencia VARCHAR(15),
+	nombre VARCHAR(50) NOT NULL,
+	valor_unitario DOUBLE(10,3) NOT NULL,
+	iva INT(3) NOT NULL,
+	descripcion VARCHAR(200),
+	producto_tipo_id INT(10) NOT NULL,
+	CONSTRAINT pros_pro_tip_fk FOREIGN KEY(producto_tipo_id) REFERENCES producto_tipos(id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+
+CREATE OR REPLACE TABLE material_tipos (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	descripcion VARCHAR(200),
+	padre INT(10) NOT NULL,
+	CONSTRAINT mat_tips_padre_fk FOREIGN KEY(padre) REFERENCES material_tipos(id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+
+CREATE OR REPLACE TABLE materiales (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	descripcion VARCHAR(100),
+	tipo_unidad SMALLINT COMMENT 'Unidad, Metro, Gramo, Mililitro' NOT NULL,
+	cantidad_unidad DOUBLE(10,3) NOT NULL,
+	material_tipo_id INT(10) NOT NULL,
+	CONSTRAINT mats_mat_tip_fk FOREIGN KEY(material_tipo_id) REFERENCES material_tipos(id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+
+CREATE OR REPLACE TABLE facturas (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	cliente_id INT(10) NOT NULL,
+	sub_total DOUBLE(15,3) NOT NULL,
+	iva DOUBLE(10,3) NOT NULL,
+	total DOUBLE(15,3) NOT NULL,
+	CONSTRAINT facs_cli_fk FOREIGN KEY(cliente_id) REFERENCES clientes(id)
+		ON UPDATE NO ACTION
+		ON DELETE NO ACTION
+);
+
+CREATE OR REPLACE TABLE factura_productos (
+	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	factura_id INT(10) NOT NULL,
+	producto_id INT(10) NOT NULL,
+	cantidad INT(10) NOT NULL,
+	valor DOUBLE(10,3),
+	CONSTRAINT fac_pros_fac_fk FOREIGN KEY(factura_id) REFERENCES facturas(id)
+		ON UPDATE NO ACTION
+		ON DELETE NO ACTION,
+	CONSTRAINT fac_pros_pro_fk FOREIGN KEY(producto_id) REFERENCES productos(id)
+		ON UPDATE NO ACTION
+		ON DELETE NO ACTION
+);
+
