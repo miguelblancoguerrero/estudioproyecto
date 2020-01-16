@@ -32,7 +32,7 @@
                         <tr>
                             <td>{{ $cliente->identificacion_tipo }}</th>
                             <td>{{ $cliente->identificacion_numero }}</td>
-                            <td>{{ $cliente->nombre.$cliente->apellidos  }}</td>
+                            <td>{{ $cliente->nombre.' '.$cliente->apellidos }}</td>
                             <td>{{ $cliente->direccion }}</td>
                             <td>{{ $cliente->telefonos }}</td>
                         </tr>
@@ -70,7 +70,7 @@
                     <input type="text" class="form-control" placeholder="Nombre o razón social" aria-label="nombre" aria-describedby="basic-addon1" name="nombre" value="{{old('nombre')}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="apellidos" aria-describedby="basic-addon1" name="apellido" value="{{old('apellido')}}">
+                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="apellidos" aria-describedby="basic-addon1" name="apellidos" value="{{old('apellido')}}">
                 </div>
                 @error('direccion')
                     <div class="alert alert-danger">Se requiere direccion de residencia</div>
