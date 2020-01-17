@@ -19,7 +19,7 @@ class ClientesDao extends Controller
     public static function insert($r) {
         DB::insert('INSERT INTO clientes (identificacion_numero, identificacion_tipo, nombre,' 
             .'apellidos, direccion, telefonos) VALUES (?,?,?,?,?,?)',
-            [$r->identificacion_numero, $r->identificacion_tipo, $r->nombre, $r->apellidos,
+            [ $r->identificacion_numero, $r->identificacion_tipo, $r->nombre, $r->apellidos,
             $r->direccion, $r->telefonos]
         );
     }

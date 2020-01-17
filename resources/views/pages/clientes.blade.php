@@ -14,8 +14,10 @@
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Editar</a>
         </li>
+        
     </ul>
     <div class="tab-content" id="myTabContent">
+
         <div class="tab-pane fade show active" id="lista-clientes" role="tabpanel" aria-labelledby="lista-clientes-tab">
             <table class="table">
                 <thead class="thead-dark">
@@ -55,6 +57,7 @@
                 </tbody>
             </table>
         </div>
+
         <div class="tab-pane fade" id="cliente" role="tabpanel" aria-labelledby="cliente-tab">
             <br>
             <h6> Datos de Cliente </h6>
@@ -102,5 +105,10 @@
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
         </div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            
+        </div>
+
     </div>
 @endsection
