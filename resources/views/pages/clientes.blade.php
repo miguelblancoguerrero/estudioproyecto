@@ -25,16 +25,31 @@
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Telefonos</th>
+                    <th scope = "col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($clientes as $cliente)
-                        <tr>
+                        <tr style="border-color: black; border-radius: 1px;">
                             <td>{{ $cliente->identificacion_tipo }}</th>
                             <td>{{ $cliente->identificacion_numero }}</td>
                             <td>{{ $cliente->nombre.' '.$cliente->apellidos }}</td>
                             <td>{{ $cliente->direccion }}</td>
                             <td>{{ $cliente->telefonos }}</td>
+                            <td>
+                            <div class="btn-group" role="group">
+                                <!--
+                                <button type="button" class="btn btn-success">Ver</button>
+                                -->
+                                <button type="button" class="btn btn-primary">Editar</button>
+                                
+                                    <a href="{{ route('cliente.eliminar', $cliente->id) }}" class="btn btn-danger">Eliminar</a>
+                                
+                                
+                            </div>
+                                
+                            </td>
+                            
                         </tr>
                     @endforeach
                 </tbody>

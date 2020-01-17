@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Daos\ClientesDao;
 
+
 class ClientesBean extends Controller
 {
     public function index() {
@@ -22,6 +23,11 @@ class ClientesBean extends Controller
             'telefonos' => 'required',
         ]);
         ClientesDao::insert($request);
+        return $this->index();
+    }
+
+    public function eliminarCliente($id){
+        ClientesDao::destruir($id);
         return $this->index();
     }
 
