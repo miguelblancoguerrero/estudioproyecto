@@ -43,11 +43,8 @@
                                 <!--
                                 <button type="button" class="btn btn-success">Ver</button>
                                 -->
-                                <button type="button" class="btn btn-primary">Editar</button>
-                                
-                                    <a href="{{ route('cliente.eliminar', $cliente->id) }}" class="btn btn-danger">Eliminar</a>
-                                
-                                
+                                <a href="{{ route('cliente.getpage', 'id='.$cliente->id) }}" class="btn btn-warning">Editar</a>
+                                <a href="{{ route('cliente.eliminar', $cliente->id) }}" class="btn btn-danger">Eliminar</a>
                             </div>
                                 
                             </td>
@@ -107,7 +104,55 @@
         </div>
 
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            
+        <br>
+        <br>
+            @isset($cliente_edit)
+                
+                    @foreach($cliente_edit as $cli)
+                    <form action="{{route('cliente.editar', 'id='.$cli->id)}}">
+                        <div class="mb-3">
+                            <select class="custom-select"  name="identificacion_tipo_edit">
+                                <option selected>Tipo de Identificacion</option>
+                                <option value="CC">Cedula de ciudadanía</option>
+                                <option value="NIT">Nit</option>
+                                <option value="TE">Tarjeta de Extranjería</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="identificacion_numero_edit">Numero de identificacion:</label>
+                            <input name="identificacion_numero_edit"type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->identificacion_numero }}"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre_edit">Nombre o razón social:</label>
+                            <input name="nombre_edit" type="text" class="form-control" placeholder="Nombre o razón social" value="{{ $cli->nombre }}"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellidos_edit">Apellidos:</label>
+                            <input name="apellidos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->apellidos }}"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion_edit">Dirección:</label>
+                            <input name="direccion_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->direccion }}"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefonos_edit">Telefonos:</label>
+                            <input name="telefonos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->telefonos }}"></input>
+                        </div>
+                        
+                            <button class="btn btn-warning" type="submit">Editar</button>
+                        </form>
+                        
+                    @endforeach
+                    
+                
+            @else
+                <h4>No ha seleccionado ningún cliente...</h4>
+            @endisset
         </div>
 
     </div>
