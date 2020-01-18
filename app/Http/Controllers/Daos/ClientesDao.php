@@ -15,7 +15,7 @@ class ClientesDao extends Controller
 
     public static function getById($id){
         if($id != null){
-            return DB::select("SELECT * FROM CLIENTES WHERE ID = ?" , [$id]);
+            return DB::select("SELECT * FROM CLIENTES WHERE ID = ?" , [$id])[0];
         }
     }
     public static function insert($r) {
@@ -26,10 +26,30 @@ class ClientesDao extends Controller
         );
     }
     public static function destruir($id){
-        DB::statement("DELETE FROM CLIENTES WHERE ID=".$id);
-        DB::statement("COMMIT");
-    } 
+        DB::delete("DELETE FROM CLIENTES WHERE ID=".$id);
+    }
+
+    /*
     public static function editar($request, $id){
-        DB::statement("UPDATE CLIENTES SET identificacion_numero = ?, identificacion_tipo = ?, nombre = ?, apellidos = ?, direccion = ?, telefonos = ?, fec_mod = CURRENT_TIMESTAMP WHERE ".$id, [$request->identificacion_numero_edit, $request->identificacion_tipo_edit ,$request->nombre_edit , $request->apellidos_edit, $request->direccion_edit, $request->telefonos_edit]);
+        $SQL = "UPDATE CLIENTES SET identificacion_numero = '?', identificacion_tipo = '?', "
+        ."nombre = '?', apellidos = '?', direccion = '?', telefonos = '?', fec_mod = CURRENT_TIMESTAMP "
+        ."WHERE id = ".$id;
+        DB::update($SQL,
+        [$request->identificacion_numero_edit, $request->identificacion_tipo_edit 
+        ,$request->nombre_edit , $request->apellidos_edit, $request->direccion_edit
+        , $request->telefonos_edit]);
+    }
+    */
+    public static function editar($cliente){
+        $SQL = "UPDATE clientes "
+        ."SET identificacion_numero = '$cliente->identificacion_numero', "
+        ."identificacion_tipo = '$cliente->identificacion_tipo', "
+        ."nombre = '$cliente->nombre', "
+        ."apellidos = '$cliente->apellidos', "
+        ."direccion = '$cliente->direccion', "
+        ."telefonos = '$cliente->telefonos', "
+        ."fec_mod = CURRENT_TIMESTAMP "
+        ."WHERE id = ".$cliente->id;
+        DB::update($SQL);
     }
 }

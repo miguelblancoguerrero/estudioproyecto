@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Beans;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Daos\ClientesDao;
-
+use App\Entities\Cliente;
 
 class ClientesBean extends Controller
 {
@@ -37,17 +37,14 @@ class ClientesBean extends Controller
         ClientesDao::destruir($id);
         return $this->index();
     }
-    public function editarCliente(Request $request, $id){
-        
-        $request->validate([
-            'identificacion_tipo' => 'required',
-            'identificacion_numero' => 'required',
-            'nombre' => 'required',
-            'direccion' => 'required',
-            'telefonos' => 'required'
-        ]);
-        ClientesDao::editar($request, $id);
-        header("Refresh:0");
+
+    public function editarCliente(Request $request){
+        //$request->validate([]);
+        $cliente = new Cliente($request->id, $request->identificacion_numero_edit
+        ,$request->identificacion_tipo_edit,$request->nombre_edit,$request->apellidos_edit
+        ,$request->direccion_edit,$request->telefonos_edit,0);
+        ClientesDao::editar($cliente);
+        return back();
     }
 
 }
