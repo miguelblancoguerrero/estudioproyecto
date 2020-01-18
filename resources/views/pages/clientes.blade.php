@@ -127,15 +127,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="apellidos_edit">Apellidos:</label>
-                    <input name="apellidos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cliente_edit->apellidos }}"></input>
+                    <input name="apellidos_edit" type="text" class="form-control" placeholder="Apellidos" value="{{ $cliente_edit->apellidos }}"></input>
                 </div>
                 <div class="mb-3">
                     <label for="direccion_edit">Dirección:</label>
-                    <input name="direccion_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cliente_edit->direccion }}"></input>
+                    <input name="direccion_edit" type="text" class="form-control" placeholder="Direccion" value="{{ $cliente_edit->direccion }}"></input>
                 </div>
                 <div class="mb-3">
                     <label for="telefonos_edit">Telefonos:</label>
-                    <input name="telefonos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cliente_edit->telefonos }}"></input>
+                    <input name="telefonos_edit" type="text" class="form-control" placeholder="Telefonos" value="{{ $cliente_edit->telefonos }}"></input>
                 </div>
                 <button class="btn btn-warning" type="submit">Editar</button>
             </form>
