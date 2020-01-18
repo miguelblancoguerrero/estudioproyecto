@@ -14,7 +14,6 @@
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Editar</a>
         </li>
-        
     </ul>
     <div class="tab-content" id="myTabContent">
 
@@ -112,10 +111,24 @@
                 <input type="hidden" name="id" value="{{$cliente_edit->id}}">
                 <div class="mb-3">
                     <select class="custom-select"  name="identificacion_tipo_edit" value="{{$cliente_edit->identificacion_tipo}}">
-                        <option selected>Tipo de Identificacion</option>
-                        <option value="CC">Cedula de ciudadanía</option>
-                        <option value="NIT">Nit</option>
-                        <option value="TE">Tarjeta de Extranjería</option>
+                        @if($cliente_edit->identificacion_tipo == 'CC')
+                        <option selected>{{$cliente_edit->identificacion_tipo}}</option>
+                        <option value="NIT">NIT</option>
+                        <option value="TE">TE</option>
+                        @endif
+
+                        @if($cliente_edit->identificacion_tipo == 'NIT')
+                        <option value="CC">CC</option>
+                        <option selected>{{$cliente_edit->identificacion_tipo}}</option>
+                        <option value="TE">TE</option>
+                        @endif
+
+                        @if($cliente_edit->identificacion_tipo == 'TE')
+                        <option value="CC">CC</option>
+                        <option value="NIT">NIT</option>
+                        <option selected>{{$cliente_edit->identificacion_tipo}}</option>
+                        @endif
+                        
                     </select>
                 </div>
                 <div class="mb-3">

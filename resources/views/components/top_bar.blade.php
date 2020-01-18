@@ -14,6 +14,7 @@
                     <a class="dropdown-item" href="clientes">Administrar clientes</a>
                 </div>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Facturación
@@ -22,9 +23,17 @@
                     <a class="dropdown-item" href="facturas">Administrar facturas</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Inventario</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Inventario
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="productos">Administrar productos</a>
+                    <a class="dropdown-item" href="productosTipo">Administrar tipos de productos</a>
+                </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">Contabilidad</a>
             </li>
@@ -32,12 +41,3 @@
             </ul>
         </div>
         </nav>
-
-
-
-<!--
-    <div class="container-fluid" style="background-color: #44578d; color:white;">
-    <h4>PRUEBA DE TOP BAR</h4>
-</div>
-
--->

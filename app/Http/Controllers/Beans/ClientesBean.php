@@ -39,12 +39,19 @@ class ClientesBean extends Controller
     }
 
     public function editarCliente(Request $request){
-        //$request->validate([]);
+        $request->validate([
+            'id' => 'required',
+            'identificacion_numero_edit' => 'required',
+            'identificacion_tipo_edit' => 'required',
+            'nombre_edit' => 'required',
+            'direccion_edit' => 'required',
+            'telefonos_edit' => 'required'
+        ]);
         $cliente = new Cliente($request->id, $request->identificacion_numero_edit
         ,$request->identificacion_tipo_edit,$request->nombre_edit,$request->apellidos_edit
         ,$request->direccion_edit,$request->telefonos_edit,0);
         ClientesDao::editar($cliente);
-        return back();
+        return $this->getView();
     }
 
 }
