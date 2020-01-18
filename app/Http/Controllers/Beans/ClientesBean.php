@@ -30,12 +30,12 @@ class ClientesBean extends Controller
             'telefonos' => 'required'
         ]);
         ClientesDao::insert($request);
-        return $this->index();
+        return $this->getView();
     }
 
     public function eliminarCliente($id){
         ClientesDao::destruir($id);
-        return $this->index();
+        return $this->getView();
     }
 
     public function editarCliente(Request $request){

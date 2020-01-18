@@ -16,4 +16,9 @@ class ProductoTiposDao extends Controller
             return DB::select("SELECT * FROM PRODUCTO_TIPOS WHERE ID = ?" , [$id])[0];
         }
     }
+    public static function destruir($id){
+        if($id != null){
+            DB::delete("DELETE FROM PRODUCTO_TIPOS WHERE ID = ?", [$id]);
+        }
+    }
 }

@@ -19,4 +19,9 @@ class ProductoTiposBean extends Controller
         }
         return $this->getView()->with(compact('productosTipoEdit'));
     }
+
+    public function eliminarTP($id){
+        ProductoTiposDao::destruir($id);
+        return $this->getView();
+    }
 }

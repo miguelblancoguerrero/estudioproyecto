@@ -39,9 +39,6 @@
                             <td>{{ $cliente->telefonos }}</td>
                             <td>
                             <div class="btn-group" role="group">
-                                <!--
-                                <button type="button" class="btn btn-success">Ver</button>
-                                -->
                                 <a href="{{ route('cliente.getpage', 'id='.$cliente->id) }}" id="btn_edit" class="btn btn-warning">Editar</a>
                                 <a href="{{ route('cliente.eliminar', $cliente->id) }}" class="btn btn-danger">Eliminar</a>
                             </div>
@@ -65,7 +62,7 @@
                     <div class="alert alert-danger">Se requiere un tipo de identificacion</div>
                 @enderror
                 <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect01" name="identificacion_tipo" value="{{ old('identificacion_tipo') }}">
+                    <select class="custom-select" id="inputGroupSelect01" name="identificacion_tipo">
                         <option selected>Tipo de Identificacion</option>
                         <option value="CC">Cedula de ciudadanía</option>
                         <option value="NIT">Nit</option>
