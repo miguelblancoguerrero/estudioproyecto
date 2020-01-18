@@ -43,7 +43,7 @@
                                 <!--
                                 <button type="button" class="btn btn-success">Ver</button>
                                 -->
-                                <a href="{{ route('cliente.getpage', 'id='.$cliente->id) }}" class="btn btn-warning">Editar</a>
+                                <a href="{{ route('cliente.getpage', 'id='.$cliente->id) }}" id="btn_edit" class="btn btn-warning">Editar</a>
                                 <a href="{{ route('cliente.eliminar', $cliente->id) }}" class="btn btn-danger">Eliminar</a>
                             </div>
                                 
@@ -51,6 +51,7 @@
                             
                         </tr>
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>
@@ -139,6 +140,9 @@
                 </div>
                 <button class="btn btn-warning" type="submit">Editar</button>
             </form>
+            <script>
+                $('#myTab li:last-child a').tab('show')
+            </script>
             @else
                 <h4>No ha seleccionado ningún cliente...</h4>
             @endisset
