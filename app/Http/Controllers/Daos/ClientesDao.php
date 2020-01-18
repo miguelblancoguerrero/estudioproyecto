@@ -30,6 +30,6 @@ class ClientesDao extends Controller
         DB::statement("COMMIT");
     } 
     public static function editar($request, $id){
-        DB::statement("UPDATE CLIENTES SET identificacion_numero = ?, identificacion_tipo = ?, nombre = ?, apellidos = ?, direccion = ?, telefonos = ?, fec_mod = CURRENT_TIMESTAMP WHERE id = ".$id, [$request->identificacion_numero_edit, $request->identificacion_tipo_edit ,$request->nombre_edit , $request->apellidos_edit, $request->direccion_edit, $request->telefonos_edit]);
+        DB::statement("UPDATE CLIENTES SET identificacion_numero = ?, identificacion_tipo = ?, nombre = ?, apellidos = ?, direccion = ?, telefonos = ?, fec_mod = CURRENT_TIMESTAMP WHERE ".$id, [$request->identificacion_numero_edit, $request->identificacion_tipo_edit ,$request->nombre_edit , $request->apellidos_edit, $request->direccion_edit, $request->telefonos_edit]);
     }
 }
