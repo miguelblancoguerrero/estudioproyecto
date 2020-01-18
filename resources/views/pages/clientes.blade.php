@@ -131,17 +131,17 @@
 
                         <div class="mb-3">
                             <label for="apellidos_edit">Apellidos:</label>
-                            <input name="apellidos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->apellidos }}"></input>
+                            <input name="apellidos_edit" type="text" class="form-control" placeholder="Apellidos" value="{{ $cli->apellidos }}"></input>
                         </div>
 
                         <div class="mb-3">
                             <label for="direccion_edit">Dirección:</label>
-                            <input name="direccion_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->direccion }}"></input>
+                            <input name="direccion_edit" type="text" class="form-control" placeholder="Direccion" value="{{ $cli->direccion }}"></input>
                         </div>
 
                         <div class="mb-3">
                             <label for="telefonos_edit">Telefonos:</label>
-                            <input name="telefonos_edit" type="text" class="form-control" placeholder="Numero de identificacion" value="{{ $cli->telefonos }}"></input>
+                            <input name="telefonos_edit" type="text" class="form-control" placeholder="Telefonos" value="{{ $cli->telefonos }}"></input>
                         </div>
                         
                             <button class="btn btn-warning" type="submit">Editar</button>
