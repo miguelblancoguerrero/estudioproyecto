@@ -160,6 +160,7 @@
                 <h4>No ha seleccionado ningún cliente...</h4>
             @endisset
         </div>
-
+    <br>
+    <br>
     </div>
 @endsection

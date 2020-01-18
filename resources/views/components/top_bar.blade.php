@@ -11,10 +11,9 @@
                 Clientes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="clientes">Administrar clientes</a>
+                    <a class="dropdown-item" href="{{route('cliente.getpage')}}">Administrar clientes</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Facturación
@@ -29,8 +28,8 @@
                 Inventario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="productos">Administrar productos</a>
-                    <a class="dropdown-item" href="productosTipo">Administrar tipos de productos</a>
+                    <a class="dropdown-item" href="{{route('producto.getpage')}}">Administrar productos</a>
+                    <a class="dropdown-item" href="{{route('productosTipo.getpage')}}">Administrar tipos de productos</a>
                 </div>
             </li>
 

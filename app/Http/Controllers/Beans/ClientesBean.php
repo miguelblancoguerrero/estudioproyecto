@@ -51,6 +51,7 @@ class ClientesBean extends Controller
         ,$request->identificacion_tipo_edit,$request->nombre_edit,$request->apellidos_edit
         ,$request->direccion_edit,$request->telefonos_edit,0);
         ClientesDao::editar($cliente);
+         
         return $this->getView();
     }
 
