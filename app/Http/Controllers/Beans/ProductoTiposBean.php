@@ -24,4 +24,8 @@ class ProductoTiposBean extends Controller
         ProductoTiposDao::destruir($id);
         return $this->getView();
     }
+    public function agregar(Request $request){
+        ProductoTiposDao::guardar($request);
+        return back();
+    }
 }

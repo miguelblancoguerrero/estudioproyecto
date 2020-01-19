@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ProductoTiposDao extends Controller
 {
     public static function getAll(){
-        return DB::select("SELECT * FROM PRODUCTO_TIPOS WHERE EST_BORRADO = ?", [0]);
+        return DB::select("SELECT P.*, (SELECT NOMBRE FROM PRODUCTO_TIPOS WHERE ID = P.PADRE) AS PADRE_PRODUCTO FROM PRODUCTO_TIPOS P WHERE EST_BORRADO = ?", [0]);
     }
     public static function getById($id){
         if($id != null){
@@ -20,5 +20,9 @@ class ProductoTiposDao extends Controller
         if($id != null){
             DB::delete("DELETE FROM PRODUCTO_TIPOS WHERE ID = ?", [$id]);
         }
+    }
+    public static function guardar($prod_tipo){
+        DB::insert("INSERT INTO PRODUCTO_TIPOS(DESCRIPCION, EST_BORRADO, NOMBRE, PADRE)" 
+        ." VALUES (?, ?, ?, ?)", [$prod_tipo->descripcion, 0, $prod_tipo->nombre, $prod_tipo->padre]);
     }
 }

@@ -33,7 +33,7 @@
                             <td>{{ $tipo->nombre }}</td>
                             <td>{{ $tipo->descripcion }}</td>
                             @if($tipo->padre != null)
-                                <td>{{ $tipo->padre }}</td>
+                                <td>{{ $tipo->PADRE_PRODUCTO }}</td>
                             @else
                                 <td>NINGUNO</td>
                             @endif
@@ -50,11 +50,33 @@
         </div>
         <!--Formulario de creacion de tipos de producto-->
         <div class="tab-pane fade" id="crear-tab" role="tabpanel" aria-labelledby="crear-tab">
-            
+            <form action="{{ route('productosTipo.agregar') }}" method="POST">
+            <br>
+            <h6>Datos del tipo de producto</h6>
+            <br>
+            @csrf
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre" value="">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion" value="">
+            </div>
+
+            <div class="input-group mb-3">
+                <select class="custom-select" name="padre" id="padre_select">
+                    <option selected>--- SELECCIONE UNA OPCION ---</option>
+                    @foreach($productoTipos as $tipo)
+                        <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
         </div>
         <!--Formulario de edición de tipos de producto-->
         <div class="tab-pane fade" id="editar-tab" role="tabpanel" aria-labelledby="editar-tab">
-
+            Area de edición
         </div>
     </div>
 @endsection
