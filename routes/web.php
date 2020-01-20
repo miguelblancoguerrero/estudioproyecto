@@ -22,5 +22,6 @@ Route::get('productos', 'Beans\ProductosBean@index')->name('producto.getpage');
 
 //Enrutado y métodos para el CRUD de los tipos de productos
 Route::get('productosTipo', 'Beans\ProductoTiposBean@index')->name('productosTipo.getpage');
-Route::post('productosTipo', 'Beans\ProductoTiposBean@agregar')->name('productosTipo.agregar');
 Route::get('productosTipo_eliminar/{id}', 'Beans\ProductoTiposBean@eliminarTP')->name('productosTipo.eliminar');
+Route::post('productosTipo', 'Beans\ProductoTiposBean@agregar')->name('productosTipo.agregar');
+Route::post('productosTipo/editar', 'Beans\ProductoTiposBean@editarTP')->name('productosTipo.editar');

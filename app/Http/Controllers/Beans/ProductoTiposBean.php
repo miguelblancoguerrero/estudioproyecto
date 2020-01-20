@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Beans;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Daos\ProductoTiposDao;
+use App\Entities\ProductoTipos;
 
 class ProductoTiposBean extends Controller
 {
@@ -19,7 +20,6 @@ class ProductoTiposBean extends Controller
         }
         return $this->getView()->with(compact('productosTipoEdit'));
     }
-
     public function eliminarTP($id){
         ProductoTiposDao::destruir($id);
         return $this->getView();
@@ -27,5 +27,13 @@ class ProductoTiposBean extends Controller
     public function agregar(Request $request){
         ProductoTiposDao::guardar($request);
         return back();
+    }
+    public function editarTP(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'est_borrado' => 'required'
+        ]);
     }
 }

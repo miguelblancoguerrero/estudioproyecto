@@ -66,6 +66,7 @@
             <div class="input-group mb-3">
                 <select class="custom-select" name="padre" id="padre_select">
                     <option selected>--- SELECCIONE UNA OPCION ---</option>
+                    <option value="">NINGUNO</option>
                     @foreach($productoTipos as $tipo)
                         <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
                     @endforeach
@@ -76,7 +77,34 @@
         </div>
         <!--Formulario de edición de tipos de producto-->
         <div class="tab-pane fade" id="editar-tab" role="tabpanel" aria-labelledby="editar-tab">
-            Area de edición
+        @if(isset($productoTipoEdit))
+        <form action="{{ route('productosTipo.editar') }}" method="POST">
+            <br>
+            <h6>Editar el tipo de producto</h6>
+            <br>
+            @csrf
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre_edit" value="">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion_edit" value="">
+            </div>
+
+            <div class="input-group mb-3">
+                <select class="custom-select" name="padre_edit" id="padre_select">
+                    <option selected>--- SELECCIONE UNA OPCION ---</option>
+                    <option value="">NINGUNO</option>
+                    @foreach($productoTipos as $tipo)
+                        <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+        @else
+            <h4>No ha seleccionado ningún tipo...</h4>
+        @endif
         </div>
     </div>
 @endsection
