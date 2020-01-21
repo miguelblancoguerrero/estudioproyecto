@@ -39,7 +39,7 @@
                             @endif
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="#" class="btn btn-warning">Editar</a>
+                                    <a href="{{route('productosTipo.getpage', 'id='.$tipo->id)}}" class="btn btn-warning">Editar</a>
                                     <a href="{{route('productosTipo.eliminar', $tipo->id)}}" class="btn btn-danger">Eliminar</a>
                                 </div>
                             </td>
@@ -50,20 +50,24 @@
         </div>
         <!--Formulario de creacion de tipos de producto-->
         <div class="tab-pane fade" id="crear-tab" role="tabpanel" aria-labelledby="crear-tab">
-            <form action="{{ route('productosTipo.agregar') }}" method="POST">
             <br>
             <h6>Datos del tipo de producto</h6>
             <br>
+            <form action="{{ route('productosTipo.agregar') }}" method="POST">
+            
             @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre" value="">
+            <div class="mb-3">
+            <label for="nombre">Nombre de tipo:</label>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre">
             </div>
 
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion" value="">
+            <div class="mb-3">
+                <label for="descripcion_edit">Descripcion de tipo:</label>
+                <input type="text" class="form-control" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion">
             </div>
 
-            <div class="input-group mb-3">
+            <div class="mb-3">
+            <label for="padre_select">Padre de tipo:</label>
                 <select class="custom-select" name="padre" id="padre_select">
                     <option selected>--- SELECCIONE UNA OPCION ---</option>
                     <option value="">NINGUNO</option>
@@ -77,34 +81,42 @@
         </div>
         <!--Formulario de edición de tipos de producto-->
         <div class="tab-pane fade" id="editar-tab" role="tabpanel" aria-labelledby="editar-tab">
-        @if(isset($productoTipoEdit))
+        @isset($productosTipoEdit)
+       
         <form action="{{ route('productosTipo.editar') }}" method="POST">
             <br>
             <h6>Editar el tipo de producto</h6>
             <br>
             @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre_edit" value="">
+            <input type="hidden" name="id_edit" value="{{$productosTipoEdit->id}}">
+            <div class="mb-3">
+                <label for="nombre_edit">Nombre de tipo:</label>
+                <input type="text" id = "nombre_edit" class="form-control" placeholder="Nombre" aria-label="" aria-describedby="basic-addon1" name="nombre_edit" value="{{$productosTipoEdit->nombre}}">
             </div>
 
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion_edit" value="">
+            <div class="mb-3">
+                <label for="descripcion_edit">Descripcion de tipo:</label>
+                <input type="text" class="form-control" id="descripcion_edit" placeholder="Descripcion" aria-label="" aria-describedby="basic-addon1" name="descripcion_edit" value="{{$productosTipoEdit->descripcion}}">
             </div>
 
-            <div class="input-group mb-3">
+            <div class="mb-3">
+            <label for="padre_select">Padre de tipo:</label>
                 <select class="custom-select" name="padre_edit" id="padre_select">
-                    <option selected>--- SELECCIONE UNA OPCION ---</option>
+                    <option selected>{{$productosTipoEdit->padre}}</option>
                     <option value="">NINGUNO</option>
                     @foreach($productoTipos as $tipo)
                         <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
         </form>
+        <script>
+                $('#myTab li:last-child a').tab('show')
+        </script>
         @else
             <h4>No ha seleccionado ningún tipo...</h4>
-        @endif
+        @endisset
         </div>
     </div>
 @endsection

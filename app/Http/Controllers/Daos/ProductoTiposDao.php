@@ -25,4 +25,25 @@ class ProductoTiposDao extends Controller
         DB::insert("INSERT INTO PRODUCTO_TIPOS(DESCRIPCION, EST_BORRADO, NOMBRE, PADRE)" 
         ." VALUES (?, ?, ?, ?)", [$prod_tipo->descripcion, 0, $prod_tipo->nombre, $prod_tipo->padre]);
     }
+    public static function editar($prod_tipo){
+        $SQL = NULL;
+        if($prod_tipo->padre != null){
+            $SQL = "UPDATE PRODUCTO_TIPOS SET " 
+            ."NOMBRE = '$prod_tipo->nombre', "
+            ."DESCRIPCION = '$prod_tipo->descripcion', "
+            ."PADRE = '$prod_tipo->padre', "
+            ."EST_BORRADO = '$prod_tipo->est_borrado', "
+            ."FEC_MOD = CURRENT_TIMESTAMP "
+            ."WHERE ID = '$prod_tipo->id'";
+        }else{
+            $SQL = "UPDATE PRODUCTO_TIPOS SET " 
+            ."NOMBRE = '.$prod_tipo->nombre.', "
+            ."DESCRIPCION = '.$prod_tipo->descripcion.', "
+            ."PADRE = NULL, "
+            ."EST_BORRADO = '.$prod_tipo->est_borrado.', "
+            ."FEC_MOD = CURRENT_TIMESTAMP "
+            ."WHERE ID = '.$prod_tipo->id.'";
+        }
+        DB::update($SQL);
+    }
 }

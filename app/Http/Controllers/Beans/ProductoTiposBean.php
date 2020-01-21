@@ -16,7 +16,7 @@ class ProductoTiposBean extends Controller
     public function index(Request $request){
         $productosTipoEdit = null;
         if(isset($request->id)){
-            $productosTipoEdit = ObjetoDao::getById($request->id);
+            $productosTipoEdit = ProductoTiposDao::getById($request->id);
         }
         return $this->getView()->with(compact('productosTipoEdit'));
     }
@@ -30,10 +30,13 @@ class ProductoTiposBean extends Controller
     }
     public function editarTP(Request $request){
         $request->validate([
-            'id' => 'required',
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'est_borrado' => 'required'
+            'id_edit' => 'required',
+            'nombre_edit' => 'required',
+            'descripcion_edit' => 'required',
+            'padre_edit' => 'required'
         ]);
+        $tipoObj = new ProductoTipos($request->id_edit, $request->nombre_edit, $request->descripcion_edit, $request->padre_edit, 0);
+        ProductoTiposDao::editar($tipoObj);
+        return $this->getView();
     }
 }

@@ -26,7 +26,7 @@
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Telefonos</th>
-                    <th scope = "col">Acciones</th>
+                    <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
