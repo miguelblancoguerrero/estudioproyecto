@@ -13,7 +13,7 @@ class ProductoTiposDao extends Controller
     }
     public static function getById($id){
         if($id != null){
-            return DB::select("SELECT * FROM PRODUCTO_TIPOS WHERE ID = ?" , [$id])[0];
+            return DB::select("SELECT P.*, (SELECT NOMBRE FROM PRODUCTO_TIPOS WHERE ID = P.PADRE) AS PADRE_PRODUCTO FROM PRODUCTO_TIPOS P WHERE ID = ?" , [$id])[0];
         }
     }
     public static function destruir($id){
@@ -27,7 +27,7 @@ class ProductoTiposDao extends Controller
     }
     public static function editar($prod_tipo){
         $SQL = NULL;
-        if($prod_tipo->padre != null){
+        if($prod_tipo->padre != 'NINGUNO' || $prod_tipo->padre != null){
             $SQL = "UPDATE PRODUCTO_TIPOS SET " 
             ."NOMBRE = '$prod_tipo->nombre', "
             ."DESCRIPCION = '$prod_tipo->descripcion', "

@@ -40,6 +40,6 @@ class ProductoTiposBean extends Controller
         }
         $tipoObj = new ProductoTipos($request->id_edit, $request->nombre_edit, $request->descripcion_edit, $request->padre_edit, 0);
         ProductoTiposDao::editar($tipoObj);
-        return $this->getView();
+        return redirect()->route('productosTipo.getpage');
     }
 }

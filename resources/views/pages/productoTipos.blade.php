@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($productoTipos as $tipo)
+                    @foreach($productosTipos as $tipo)
                         <tr style="border-color: black; border-radius: 1px;">
                             <td>{{ $tipo->nombre }}</td>
                             <td>{{ $tipo->descripcion }}</td>
@@ -72,7 +72,7 @@
                 <select class="custom-select" name="padre" id="padre_select">
                     <option selected>--- SELECCIONE UNA OPCION ---</option>
                     <option value="">NINGUNO</option>
-                    @foreach($productoTipos as $tipo)
+                    @foreach($productosTipos as $tipo)
                         <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
                     @endforeach
                 </select>
@@ -103,9 +103,9 @@
             <div class="mb-3">
             <label for="padre_select">Padre de tipo:</label>
                 <select class="custom-select" name="padre_edit" id="padre_select">
-                    <option selected>{{$productosTipoEdit->padre}}</option>
+                    <option selected value="{{$tipo->padre}}">{{$productosTipoEdit->PADRE_PRODUCTO}}</option>
                     <option value="">NINGUNO</option>
-                    @foreach($productoTipos as $tipo)
+                    @foreach($productosTipos as $tipo)
                         <option value="{{ $tipo->id }}">{{$tipo->nombre}}</option>
                     @endforeach
                 </select>
