@@ -10,8 +10,8 @@ use App\Entities\ProductoTipos;
 class ProductoTiposBean extends Controller
 {
     public function getView(){
-        $productoTipos = ProductoTiposDao::getAll();
-        return view('pages/productoTipos', compact('productoTipos'));
+        $productosTipos = ProductoTiposDao::getAll();
+        return view('pages/productoTipos', compact('productosTipos'));
     }
     public function index(Request $request){
         $productosTipoEdit = null;
@@ -24,7 +24,7 @@ class ProductoTiposBean extends Controller
         ProductoTiposDao::destruir($id);
         return $this->getView();
     }
-    public function agregar(Request $request){
+    public function agregarTP(Request $request){
         ProductoTiposDao::guardar($request);
         return back();
     }
@@ -35,6 +35,9 @@ class ProductoTiposBean extends Controller
             'descripcion_edit' => 'required',
             'padre_edit' => 'required'
         ]);
+        if($request->id_edit == $request->pare_edit){
+            return $this->getView();
+        }
         $tipoObj = new ProductoTipos($request->id_edit, $request->nombre_edit, $request->descripcion_edit, $request->padre_edit, 0);
         ProductoTiposDao::editar($tipoObj);
         return $this->getView();

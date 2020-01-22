@@ -17,6 +17,7 @@
     </ul>
     <!--Listado de tipos de producto-->
     <div class="tab-content">
+
         <div class="tab-pane fade show active" id="listado-tab" role="tabpanel" aria-labelledby="listado-tab">
             <table class="table">
                 <thead class="thead-dark">
@@ -82,11 +83,11 @@
         <!--Formulario de edición de tipos de producto-->
         <div class="tab-pane fade" id="editar-tab" role="tabpanel" aria-labelledby="editar-tab">
         @isset($productosTipoEdit)
-       
-        <form action="{{ route('productosTipo.editar') }}" method="POST">
-            <br>
+        <br>
             <h6>Editar el tipo de producto</h6>
-            <br>
+        <br>
+        <form action="{{ route('productosTipo.editar') }}" method="POST">
+            
             @csrf
             <input type="hidden" name="id_edit" value="{{$productosTipoEdit->id}}">
             <div class="mb-3">
@@ -112,11 +113,13 @@
             <button type="submit" class="btn btn-primary">Editar</button>
         </form>
         <script>
-                $('#myTab li:last-child a').tab('show')
+            $('#myTab li:last-child a').tab('show')
         </script>
         @else
             <h4>No ha seleccionado ningún tipo...</h4>
         @endisset
         </div>
+    <br>
+    <br>
     </div>
 @endsection
