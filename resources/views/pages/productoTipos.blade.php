@@ -118,7 +118,7 @@
         @else
             <h4>No ha seleccionado ningún tipo...</h4>
         @endisset
-        </div>
+    </div>
     <br>
     <br>
     </div>
