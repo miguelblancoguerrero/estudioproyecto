@@ -20,6 +20,7 @@ Route::post('clientes', 'Beans\ClientesBean@guardarCliente')->name('cliente.agre
 Route::post('clientes/editar', 'Beans\ClientesBean@editarCliente')->name('cliente.editar');
 //Enrutado y métodos para el CRUD de los productos
 Route::get('productos', 'Beans\ProductosBean@index')->name('producto.getpage');
+Route::post('productos', 'Beans\ProductosBean@agregarProducto')->name('producto.agregar');
 
 //Enrutado y métodos para el CRUD de los tipos de productos
 Route::get('productosTipo', 'Beans\ProductoTiposBean@index')->name('productosTipo.getpage');

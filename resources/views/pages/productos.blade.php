@@ -24,13 +24,32 @@
                         <th scope="row">Codigo</th>
                         <th scope="row">Referencia</th>
                         <th scope="row">Nombre</th>
-                        <th scope="row">Valor unitario</th>
-                        <th scope="row">Iva</th>
                         <th scope="row">Descripcion</th>
                         <th scope="row">Tipo de producto</th>
+                        <th scope="row">Valor unitario</th>
+                        <th scope="row">Iva</th>
+                        
+                        
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($productos as $producto)
+                        <tr>
+                           <th>{{ $producto->codigo }}</th>
+                           <th>{{ $producto->referencia }}</th>
+                           <th>{{ $producto->nombre }}</th>
+                           <th>{{ $producto->descripcion }}</th>
+                           <th>{{ $producto->nombre_tipo_producto }}</th>
+                           <th>{{ $producto->valor_unitario }}</th>
+                           <th>{{ $producto->iva }}</th>
+                           
+                           <th>
+                            <a href="#" class="btn btn-warning">Editar</a>
+                            <a href="#" class="btn btn-danger">Eliminar</a>
+                           </th> 
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -39,7 +58,40 @@
         <div class="tab-pane fade" id="creacionProductos" role="tabpanel" aria-labelledby="creacionProductos">
             <br>
             <br>
-                Area de creacion de productos
+                <form action="">
+
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <input type="text" placeholder="Codigo" class="form-control" name="codigo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Referencia" class="form-control" name="referencia">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre" class="form-control" name="nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Descripcion" class="form-control" name="descripcion">
+                        </div>
+                        
+                        <div class="form-group">
+                            <select name="producto_tipo_id" id="" class="custom-select">
+                                <option selected value="">-- SELECCIONE UN TIPO DE PRODUCTO --</option>
+                                    @foreach($productosTipos as $PT)
+                                        <option value="{{$PT->id}}">{{$PT->nombre}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Valor unitario" class="form-control" name="valor_unitario">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Iva (0.01 - 99.99)" class="form-control" name="">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
         </div>
 <!--Edición de productos-->
         <div class="tab-pane fade" id="edicionProductos" role="tabpanel" aria-labelledby="edicionProductos">

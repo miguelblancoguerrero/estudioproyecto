@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Beans;
 use App\Http\Controllers\Daos\ProductosDao;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Daos\ProductoTiposDao;
 
 class ProductosBean extends Controller
 {
     public function getView(){
         $productos = ProductosDao::getAll();
-        return view('pages/productos', compact('productos'));
+        $productosTipos = ProductoTiposDao::getAll();
+        return view('pages/productos', compact('productos'))->with(compact('productosTipos'));
     }
     public function index(Request $request){
         $productoEditable = null;
@@ -19,8 +21,14 @@ class ProductosBean extends Controller
         }
         return $this->getView()->with(compact('productoEditable'));
     }
-    public function guardarProducto(Request $request){
-        //$request->validate([]);
+    public function agregarProducto(Request $request){
+        $request->validate([
+            '' => 'required',
+            '' => 'required',
+            '' => 'required',
+            '' => 'required'
+
+        ]);
         
     }
 }

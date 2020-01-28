@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class ProductosDao extends Controller
 {
     public static function getAll(){
-        return DB::select("SELECT P.*, PT.NOMBRE as nombre_tipo_producto FROM PRODUCTOS P LEFT JOIN producto_tipos PT on p.producto_tipo_id = PT.id WHERE EST_BORRADO = 0");
+        return DB::select("SELECT P.*, PT.NOMBRE as nombre_tipo_producto FROM PRODUCTOS P LEFT JOIN producto_tipos PT on p.producto_tipo_id = PT.id WHERE P.EST_BORRADO = 0");
     }
     public static function getById($id){
         return DB::select("SELECT * FROM PRODUCTOS WHERE ID = ?",[$id])[0];
