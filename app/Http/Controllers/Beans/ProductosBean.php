@@ -6,6 +6,7 @@ use App\Http\Controllers\Daos\ProductosDao;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Daos\ProductoTiposDao;
+use App\Entities\Producto;
 
 class ProductosBean extends Controller
 {
@@ -33,6 +34,20 @@ class ProductosBean extends Controller
         return $this->getView();
     }
     public function editarProducto(Request $request){
-        
+        $producto = new Producto($request->id, 
+        $request->codigo, 
+        $request->referencia, 
+        $request->nombre, 
+        $request->valor_unitario, 
+        $request->iva, 
+        $request->descripcion, 
+        $request->producto_tipo_id, 
+        0);
+        ProductosDao::edit($producto);
+        return redirect()->route('producto.getpage');
+    }
+    public function eliminarProducto($id){
+        ProductosDao::destroy($id);
+        return redirect()->route('producto.getpage');
     }
 }

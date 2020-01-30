@@ -45,8 +45,8 @@
                            <th>{{ $producto->iva }}</th>
                            
                            <th>
-                            <a href="#" class="btn btn-warning">Editar</a>
-                            <a href="#" class="btn btn-danger">Eliminar</a>
+                            <a href="{{  route('producto.getpage', 'id='.$producto->id) }}" class="btn btn-warning">Editar</a>
+                            <a href="{{ route('producto.eliminar', $producto->id) }}" class="btn btn-danger">Eliminar</a>
                            </th> 
                         </tr>
                     @endforeach
@@ -102,24 +102,27 @@
                     @csrf
                     <div class="mb-3">
                         <div class="form-group">
-                        <Label>Código</Label>
+                            <input type="hidden" placeholder="Codigo" class="form-control" name="id" value="{{$productoEditable->id}}">
+                        </div>
+                        <div class="form-group">
+                            <Label>Código</Label>
                             <input type="text" placeholder="Codigo" class="form-control" name="codigo" value="{{$productoEditable->codigo}}">
                         </div>
                         <div class="form-group">
-                        <Label>Referencia</Label>
+                            <Label>Referencia</Label>
                             <input type="text" placeholder="Referencia(Opcional)" class="form-control" name="referencia" value="{{$productoEditable->referencia}}">
                         </div>
                         <div class="form-group">
-                        <Label>Nombre</Label>
+                            <Label>Nombre</Label>
                             <input type="text" placeholder="Nombre" class="form-control" name="nombre" value="{{$productoEditable->nombre}}">
                         </div>
                         <div class="form-group">
-                        <Label>Descripcion</Label>
+                            <Label>Descripcion</Label>
                             <input type="text" placeholder="Descripcion(Opcional)" class="form-control" name="descripcion" value="{{$productoEditable->descripcion}}">
                         </div>
                         
                         <div class="form-group">
-                        <Label></Label>
+                            <Label>Tipo de producto</Label>
                             <select name="producto_tipo_id" id="" class="custom-select">
                                 <option selected value="{{$productoEditable->producto_tipo_id}}">{{$productoEditable->nombre_tipo_producto}}</option>
                                     @foreach($productosTipos as $PT)
@@ -129,16 +132,21 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Valor unitario</label>
                             <input type="text" placeholder="Valor unitario" class="form-control" name="valor_unitario" value="{{$productoEditable->valor_unitario}}">
                         </div>
                         <div class="form-group">
+                            <label>Iva</label>
                             <input type="text" placeholder="Iva (1 - 99 sólo números enteros)" class="form-control" name="iva" value="{{$productoEditable->iva}}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-warning">Editar</button>
+                    <script>
+                        $('#myTab li:last-child a').tab('show')
+                    </script>
                 </form>
                 @else
-                    jajxd
+                    <h4>No ha seleccionado ningún producto...</h4>
                 @endisset
         </div>
     </div>

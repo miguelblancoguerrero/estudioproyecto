@@ -20,4 +20,28 @@ class ProductosDao extends Controller
         ."VALUES ('$productoObj->codigo', '$productoObj->referencia', '$productoObj->nombre', $productoObj->valor_unitario, $productoObj->iva, '$productoObj->descripcion', $productoObj->producto_tipo_id, 0)";
         DB::insert($SQL);
     }
+    public static function edit($producto){
+        DB::update("UPDATE "
+        ."PRODUCTOS SET "
+        ."CODIGO = ?, "
+        ."REFERENCIA = ?, "
+        ."NOMBRE = ?, "
+        ."VALOR_UNITARIO = ?, "
+        ."IVA = ?, "
+        ."DESCRIPCION = ?, "
+        ."PRODUCTO_TIPO_ID = ?, "
+        ."FEC_MOD = CURRENT_TIMESTAMP "
+        ."WHERE ID = ?", 
+        [$producto->codigo, 
+        $producto->referencia, 
+        $producto->nombre, 
+        $producto->valor_unitario, 
+        $producto->iva, 
+        $producto->descripcion, 
+        $producto->producto_tipo_id, 
+        $producto->id]);
+    }
+    public static function destroy($id){
+        DB::delete("DELETE FROM PRODUCTOS WHERE ID = ?", [$id]);
+    }
 }
