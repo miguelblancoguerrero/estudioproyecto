@@ -97,7 +97,49 @@
         <div class="tab-pane fade" id="edicionProductos" role="tabpanel" aria-labelledby="edicionProductos">
             <br>
             <br>
-                Area de edicion de productos
+                @isset($productoEditable)
+                <form action="{{ route('producto.editar') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <div class="form-group">
+                        <Label>Código</Label>
+                            <input type="text" placeholder="Codigo" class="form-control" name="codigo" value="{{$productoEditable->codigo}}">
+                        </div>
+                        <div class="form-group">
+                        <Label>Referencia</Label>
+                            <input type="text" placeholder="Referencia(Opcional)" class="form-control" name="referencia" value="{{$productoEditable->referencia}}">
+                        </div>
+                        <div class="form-group">
+                        <Label>Nombre</Label>
+                            <input type="text" placeholder="Nombre" class="form-control" name="nombre" value="{{$productoEditable->nombre}}">
+                        </div>
+                        <div class="form-group">
+                        <Label>Descripcion</Label>
+                            <input type="text" placeholder="Descripcion(Opcional)" class="form-control" name="descripcion" value="{{$productoEditable->descripcion}}">
+                        </div>
+                        
+                        <div class="form-group">
+                        <Label></Label>
+                            <select name="producto_tipo_id" id="" class="custom-select">
+                                <option selected value="{{$productoEditable->producto_tipo_id}}">{{$productoEditable->nombre_tipo_producto}}</option>
+                                    @foreach($productosTipos as $PT)
+                                        <option value="{{$PT->id}}">{{$PT->nombre}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Valor unitario" class="form-control" name="valor_unitario" value="{{$productoEditable->valor_unitario}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Iva (1 - 99 sólo números enteros)" class="form-control" name="iva" value="{{$productoEditable->iva}}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Editar</button>
+                </form>
+                @else
+                    jajxd
+                @endisset
         </div>
     </div>
 
