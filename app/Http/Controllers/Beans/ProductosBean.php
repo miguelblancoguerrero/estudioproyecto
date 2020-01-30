@@ -22,13 +22,14 @@ class ProductosBean extends Controller
         return $this->getView()->with(compact('productoEditable'));
     }
     public function agregarProducto(Request $request){
-        $request->validate([
-            '' => 'required',
-            '' => 'required',
-            '' => 'required',
-            '' => 'required'
-
-        ]);
-        
+        /*$request->validate([
+            'codigo' => 'required',
+            'valor_unitario' => 'required',
+            'nombre' => 'required',
+            'iva' => 'required',
+            'producto_tipo_id' => 'required'
+        ]);*/
+        ProductosDao::store($request);
+        return $this->getView();
     }
 }

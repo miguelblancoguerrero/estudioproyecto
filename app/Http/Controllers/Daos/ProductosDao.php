@@ -17,7 +17,7 @@ class ProductosDao extends Controller
     }
     public static function store($productoObj){
         $SQL = "INSERT INTO PRODUCTOS( CODIGO, REFERENCIA, NOMBRE, VALOR_UNITARIO, IVA, DESCRIPCION, PRODUCTO_TIPO_ID, EST_BORRADO) " 
-        ."VALUES ($productoObj->codigo, $productoObj->referencia, $productoObj->nombre, $productoObj->valor_unitario, $productoObj->iva, $productoObj->descripcion, $productoObj->producto_tipo_id, $productoObj->est_borrado)";
+        ."VALUES ('$productoObj->codigo', '$productoObj->referencia', '$productoObj->nombre', $productoObj->valor_unitario, $productoObj->iva, '$productoObj->descripcion', $productoObj->producto_tipo_id, 0)";
         DB::insert($SQL);
     }
 }

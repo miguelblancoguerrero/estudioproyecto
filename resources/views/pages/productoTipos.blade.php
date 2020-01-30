@@ -54,7 +54,7 @@
             <br>
             <h6>Datos del tipo de producto</h6>
             <br>
-            <form action="{{ route('productosTipo.agregar') }}" method="POST">
+        <form action="{{ route('productosTipo.agregar') }}" method="POST">
             
             @csrf
             <div class="mb-3">

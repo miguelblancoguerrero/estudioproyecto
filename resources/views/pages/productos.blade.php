@@ -58,20 +58,20 @@
         <div class="tab-pane fade" id="creacionProductos" role="tabpanel" aria-labelledby="creacionProductos">
             <br>
             <br>
-                <form action="">
-
+                <form action="{{ route('producto.agregar') }}" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <div class="form-group">
                             <input type="text" placeholder="Codigo" class="form-control" name="codigo">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Referencia" class="form-control" name="referencia">
+                            <input type="text" placeholder="Referencia(Opcional)" class="form-control" name="referencia">
                         </div>
                         <div class="form-group">
                             <input type="text" placeholder="Nombre" class="form-control" name="nombre">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Descripcion" class="form-control" name="descripcion">
+                            <input type="text" placeholder="Descripcion(Opcional)" class="form-control" name="descripcion">
                         </div>
                         
                         <div class="form-group">
@@ -87,7 +87,7 @@
                             <input type="text" placeholder="Valor unitario" class="form-control" name="valor_unitario">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Iva (0.01 - 99.99)" class="form-control" name="">
+                            <input type="text" placeholder="Iva (1 - 99 sólo números enteros)" class="form-control" name="iva">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Agregar</button>
