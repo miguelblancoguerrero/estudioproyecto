@@ -21,13 +21,13 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="row">Codigo</th>
-                        <th scope="row">Referencia</th>
-                        <th scope="row">Nombre</th>
-                        <th scope="row">Descripcion</th>
-                        <th scope="row">Tipo de producto</th>
-                        <th scope="row">Valor unitario</th>
-                        <th scope="row">Iva</th>
+                        <th scope="row" class="text-center">Codigo</th>
+                        <th scope="row" class="text-center">Referencia</th>
+                        <th scope="row" class="text-center">Nombre</th>
+                        <th scope="row" class="text-center">Descripcion</th>
+                        <th scope="row" class="text-center">Tipo de producto</th>
+                        <th scope="row" class="text-center">Valor unitario</th>
+                        <th scope="row" class="text-center">Iva</th>
                         
                         
                         <th>Acciones</th>

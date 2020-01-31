@@ -19,7 +19,8 @@
                 Facturación
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="facturas">Administrar facturas</a>
+                    <a class="dropdown-item" href="{{ route('facturacion.getpage') }}">Administrar facturas</a>
+                    <a href=""></a>
                 </div>
             </li>
 
