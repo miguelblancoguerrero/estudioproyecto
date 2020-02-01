@@ -1,7 +1,10 @@
 @extends('templates/template')
 @section('principal_section')
 
-    <br>
+
+<br><br>
+<h4>Información sobre los productos</h4>
+<br>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="lista-productos-tab" data-toggle="tab" href="#lista-productos" role="tab" aria-controls="lista-productos" aria-selected="true">Listado de productos</a>
@@ -16,8 +19,6 @@
 <!-- Listado de productos-->
     <div class="tab-content">
         <div class="tab-pane fade show active" id="lista-productos" role="tabpanel" aria-labelledby="listado-productos">
-        <br>
-        <br>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>

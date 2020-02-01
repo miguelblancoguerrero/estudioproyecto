@@ -20,7 +20,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('facturacion.getpage') }}">Administrar facturas</a>
-                    <a href=""></a>
                 </div>
             </li>
 
