@@ -13,6 +13,7 @@
 
 
 Route::get('/', function () {return view('welcome');});
+Route::get('facturacionxd', 'Beans\FacturacionBean@pdff')->name('generar.factura');
 
 //Enrutado y métodos para el CRUD de los clientes
 Route::get('clientes', 'Beans\ClientesBean@index')->name('cliente.getpage');
