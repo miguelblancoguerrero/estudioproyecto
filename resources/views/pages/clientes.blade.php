@@ -56,7 +56,7 @@
             <br>
             <h6> Datos de Cliente </h6>
             <br>
-            <form method="POST" action="{{ route('cliente.agregar') }}">
+            <form method="POST" action="{{ route('cliente.agregar') }}" id="formularioAgregar">
                 @csrf
                 @error('identificacion_tipo')
                     <div class="alert alert-danger">Se requiere un tipo de identificacion</div>
@@ -97,6 +97,8 @@
                     <input type="text" class="form-control" placeholder="Telefonos" aria-label="telefonos" aria-describedby="basic-addon1" name="telefonos" value="{{old('telefonos')}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>
+
+                
             </form>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

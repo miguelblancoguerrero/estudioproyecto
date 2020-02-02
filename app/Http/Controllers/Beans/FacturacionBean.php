@@ -11,8 +11,14 @@ class FacturacionBean extends Controller
         
         return view('pages/facturacion');
     }
+    //Testeando la generacion de PDFs
     public function pdff(){
         $pdf = \PDF::loadView('PDFs\facturaTemplate');
         return $pdf->download('primerpdf.pdf');
     }
+
+    public function AJAX(){
+        echo $request;
+    }
+
 }
