@@ -17,8 +17,8 @@ class FacturacionBean extends Controller
         return $pdf->download('primerpdf.pdf');
     }
 
-    public function AJAX(){
-        echo $request;
+    public function AJAX(Request $r){
+        return response()->json(array('msg' => 'jaj'),200);
     }
 
 }

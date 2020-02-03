@@ -7,6 +7,7 @@
         <br>
     </div>
 <form data-route="{{ route('facturacionAJAX') }}" id="formConAJAX">
+@csrf
   <div class="form-row form-group" id="formDePrueba">
 
     <div class="col">

@@ -4,17 +4,17 @@
 $('#nit_cliente').keyup(function(e){
     e.preventDefault();
     let cl = $(this).val();
-    let routeName = $('#formConAJAX').data('route');
+    var routeName = $('#formConAJAX').data('route');
     $.ajax({
         type:'POST',
         url: routeName,
-        async:true,
-        data: {action:'F', nombre:cl},
+        async: true,
+        data: {vaina:"XD"},
         success:function(response){
             console.log(response);
         },
         error:function(response){
-
+            console.log(response);
         }
     });
 });
