@@ -6,16 +6,13 @@ $('#nit_cliente').keyup(function(e){
     let cl = $(this).val();
     var routeName = $('#formConAJAX').data('route');
     $.ajax({
-        type:'POST',
         url: routeName,
         async: true,
-        data: {vaina:"XD"},
+        data: {vaina:cl},
         success:function(response){
-            console.log(response);
-        },
-        error:function(response){
             console.log(response);
         }
     });
+    
 });
 

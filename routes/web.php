@@ -33,4 +33,4 @@ Route::post('productosTipo/editar', 'Beans\ProductoTiposBean@editarTP')->name('p
 
 //Enrutado y métodos para la seccion de facturación
 Route::get('facturacion', 'Beans\FacturacionBean@index')->name('facturacion.getpage');
-Route::post('facturacion/AJAX', 'Beans\FacturacionBean@AJAX')->name('facturacionAJAX');
+Route::get('facturacion/AJAX', 'Beans\FacturacionBean@AJAX')->name('facturacionAJAX');

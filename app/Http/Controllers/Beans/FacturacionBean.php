@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Beans;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Daos\FacturacionDao;
 
 class FacturacionBean extends Controller
 {
@@ -18,7 +19,7 @@ class FacturacionBean extends Controller
     }
 
     public function AJAX(Request $r){
-        return response()->json(array('msg' => 'jaj'),200);
+        FacturacionDao::getClienteByNit($r->vaina);
     }
 
 }
