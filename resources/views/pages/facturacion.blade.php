@@ -17,11 +17,7 @@
     <div class="col">
       
     </div>
-
-
   </div>
-<fieldset disabled>
-
   <div class="form-row form-group">
     <div class="col">
         <input type="text" placeholder="Nombre" class="form-control" id="nombreCliente">
@@ -36,11 +32,10 @@
         <input type="text" placeholder="" class="form-control" id="direccionCliente">
     </div>
     <div>
-        <input type="text" placeholder="" class="form-control" id="">
+        <input type="text" placeholder="" class="form-control" id="telefonosCliente">
     </div>
   </div>
 
-  </fieldset>
 </form>
 
 <script src="{{asset('js/funciones.js')}}"></script>

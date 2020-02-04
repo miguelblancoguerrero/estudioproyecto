@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\DB;
 class FacturacionDao extends Controller
 {
     public static function getClienteByNit($nit){
-        $statement = DB::select("SELECT * FROM CLIENTES WHERE IDENTIFICACION_NUMERO = ? AND EST_BORRADO = ?",[$nit, 0])[0];
-        echo $statement->nombre;
+        $statement = null;
+        $statement = DB::table('clientes')->where('identificacion_numero', $nit)->first();
+        if(empty($statement->identificacion_numero)){
+            $statement = 0;
+        }
+        return json_encode($statement);
     }
 }

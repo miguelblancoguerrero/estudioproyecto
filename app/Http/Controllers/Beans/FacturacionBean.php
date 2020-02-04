@@ -19,7 +19,7 @@ class FacturacionBean extends Controller
     }
 
     public function AJAX(Request $r){
-        FacturacionDao::getClienteByNit($r->vaina);
+        return FacturacionDao::getClienteByNit($r->vaina);
     }
 
 }
