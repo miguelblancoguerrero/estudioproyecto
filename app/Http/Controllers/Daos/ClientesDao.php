@@ -15,7 +15,7 @@ class ClientesDao extends Controller
 
     public static function getById($id){
         if($id != null){
-            return DB::select("SELECT * FROM CLIENTES WHERE ID = ?" , [$id])[0];
+            return DB::select("SELECT * FROM clientes WHERE ID = ?" , [$id])[0];
         }
     }
     public static function insert($r) {
