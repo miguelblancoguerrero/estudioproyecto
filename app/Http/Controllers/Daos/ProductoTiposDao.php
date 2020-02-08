@@ -9,40 +9,40 @@ use Illuminate\Support\Facades\DB;
 class ProductoTiposDao extends Controller
 {
     public static function getAll(){
-        return DB::select("SELECT P.*, (SELECT NOMBRE FROM PRODUCTO_TIPOS WHERE ID = P.PADRE) AS PADRE_PRODUCTO FROM PRODUCTO_TIPOS P WHERE EST_BORRADO = ?", [0]);
+        return DB::select("SELECT P.*, (SELECT nombre FROM producto_tipos WHERE id = P.padre) AS PADRE_PRODUCTO FROM producto_tipos P WHERE est_borrado = ?", [0]);
     }
     public static function getById($id){
         if($id != null){
-            return DB::select("SELECT P.*, (SELECT NOMBRE FROM PRODUCTO_TIPOS WHERE ID = P.PADRE) AS PADRE_PRODUCTO FROM PRODUCTO_TIPOS P WHERE ID = ?" , [$id])[0];
+            return DB::select("SELECT P.*, (SELECT nombre FROM producto_tipos WHERE id = P.padre) AS PADRE_PRODUCTO FROM producto_tipos P WHERE ID = ?" , [$id])[0];
         }
     }
     public static function destruir($id){
         if($id != null){
-            DB::delete("DELETE FROM PRODUCTO_TIPOS WHERE ID = ?", [$id]);
+            DB::delete("DELETE FROM producto_tipos WHERE id = ?", [$id]);
         }
     }
     public static function guardar($prod_tipo){
-        DB::insert("INSERT INTO PRODUCTO_TIPOS(DESCRIPCION, EST_BORRADO, NOMBRE, PADRE)" 
+        DB::insert("INSERT INTO producto_tipos(descripcion, est_borrado, nombre, padre)" 
         ." VALUES (?, ?, ?, ?)", [$prod_tipo->descripcion, 0, $prod_tipo->nombre, $prod_tipo->padre]);
     }
     public static function editar($prod_tipo){
         $SQL = NULL;
         if($prod_tipo->padre != 'NINGUNO' || $prod_tipo->padre != null){
-            $SQL = "UPDATE PRODUCTO_TIPOS SET " 
-            ."NOMBRE = '$prod_tipo->nombre', "
-            ."DESCRIPCION = '$prod_tipo->descripcion', "
-            ."PADRE = '$prod_tipo->padre', "
-            ."EST_BORRADO = '$prod_tipo->est_borrado', "
-            ."FEC_MOD = CURRENT_TIMESTAMP "
-            ."WHERE ID = '$prod_tipo->id'";
+            $SQL = "UPDATE producto_tipos SET " 
+            ."nombre = '$prod_tipo->nombre', "
+            ."descripcion = '$prod_tipo->descripcion', "
+            ."padre = '$prod_tipo->padre', "
+            ."est_borrado = '$prod_tipo->est_borrado', "
+            ."fec_mod = CURRENT_TIMESTAMP "
+            ."WHERE id = '$prod_tipo->id'";
         }else{
-            $SQL = "UPDATE PRODUCTO_TIPOS SET " 
-            ."NOMBRE = '.$prod_tipo->nombre.', "
-            ."DESCRIPCION = '.$prod_tipo->descripcion.', "
-            ."PADRE = NULL, "
-            ."EST_BORRADO = '.$prod_tipo->est_borrado.', "
-            ."FEC_MOD = CURRENT_TIMESTAMP "
-            ."WHERE ID = '.$prod_tipo->id.'";
+            $SQL = "UPDATE producto_tipos SET " 
+            ."nombre = '.$prod_tipo->nombre.', "
+            ."descripcion = '.$prod_tipo->descripcion.', "
+            ."padre = NULL, "
+            ."est_borrado = '.$prod_tipo->est_borrado.', "
+            ."fec_mod = CURRENT_TIMESTAMP "
+            ."WHERE id = '.$prod_tipo->id.'";
         }
         DB::update($SQL);
     }

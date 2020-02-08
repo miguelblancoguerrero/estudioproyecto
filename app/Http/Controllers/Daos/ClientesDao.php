@@ -15,7 +15,7 @@ class ClientesDao extends Controller
 
     public static function getById($id){
         if($id != null){
-            return DB::select("SELECT * FROM clientes WHERE ID = ?" , [$id])[0];
+            return DB::select("SELECT * FROM clientes WHERE id = ?" , [$id])[0];
         }
     }
     public static function insert($r) {
@@ -26,7 +26,7 @@ class ClientesDao extends Controller
         );
     }
     public static function destruir($id){
-        DB::delete("DELETE FROM CLIENTES WHERE ID=".$id);
+        DB::delete("DELETE FROM clientes WHERE id =".$id);
     }
 
     public static function editar($cliente){
