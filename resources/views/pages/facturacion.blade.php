@@ -40,22 +40,58 @@
 <!--Aquí acaba el form-->
 
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Agregar productos</a>
-  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Vista previa de factura</button>
+  <a class="btn btn-primary" data-toggle="collapse" href="#agregarProductosCollapse" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Agregar productos</a>
+  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#vistaPreviaFacturaCollapse" aria-expanded="false" aria-controls="multiCollapseExample2">Vista previa de factura</button>
 </p>
 
 <div class="row">
   <div class="col">
     <div class="collapse" id="agregarProductosCollapse">
       <div class="card card-body">
-        Productos
+
+        <table class="table">
+          <tr>
+            <th scope="row" class="text-center">Codigo</th>
+            <th scope="row" class="text-center">Nombre</th>
+            <th scope="row" class="text-center">Cantidad</th>
+            <th scope="row" class="text-center">Valor Unitario</th>
+            <th scope="row" class="text-center">Precio total</th>
+            <th scope="row">
+              Acción
+            </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">
+                <input type="text" placeholder="Buscar...">
+              </td>
+              <td scope="row">
+                <input type="text" placeholder="Buscar...">
+              </td>
+              <td scope="row">
+                <input type="text">
+              </td>
+              <td scope="row">
+                <label for=""></label>
+              </td>
+              <td scope="row">
+                <label for=""></label>
+              </td>
+              <td scope="row">
+                <a href="#" class="btn btn-success">+</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
       </div>
     </div>
   </div>
   <div class="col">
     <div class="collapse" id="vistaPreviaFacturaCollapse">
       <div class="card card-body">
-        
+        Factura
       </div>
     </div>
   </div>
