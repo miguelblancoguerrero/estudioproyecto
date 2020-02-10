@@ -8,7 +8,7 @@ $('#nit_cliente').keyup(function(e){
     $.ajax({
         url: routeName,
         async: true,
-        data: {vaina:cl},
+        data: { vaina:cl },
         success:function(response){
             let data = $.parseJSON(response);
             if(response != 0){
